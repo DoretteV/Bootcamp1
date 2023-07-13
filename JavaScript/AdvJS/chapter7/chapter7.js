@@ -91,44 +91,115 @@
 // let friend2 = new Person("Pierre", "Van der Merwe");
 // console.log(friend1.fullName());
 
-//Properties, getters and setters
+//Properties, getters and setters, prototype
+//getters and setters # protects
+//prototype makes it possible to have objects. Objects inherit from object.prototype
 
-class Person {
-  #firstName;
-  #lastName;
-  constructor(firstName, lastName) {
-    this.#firstName = firstName;
-    this.#lastName = lastName;
-  }
-  greet() {
-    console.log(`Hello, my name is ${this.firstName}`);
-  }
-  compliment(name, object) {
-    console.log(`That's a wonderful ${object}, ${name}! From ${this.firstName}`);
-  }
-  fullName() {
-    return this.firstName + " " + this.lastName;
-  }
-  get firstName() {
-    return this.#firstName;
-  }
-  set firstName(firstName) {
-    this.#firstName = firstName;
-  }
-  get lastName() {
-    return this.#lastName;
-  }
-  set lastName(lastName) {
-    this.#lastName = lastName;
-  }
-}
-let friend1 = new Person("Estelle", "Posthumus");
-let friend2 = new Person("Pierre", "Van der Merwe");
-friend1.lastName = "Van Wyk";
-console.log(friend1.fullName());
-console.log(`Hello ${friend1.firstName} and ${friend2.firstName}!`);
-friend1.firstName = "Rynhardt";
-friend1.greet();
-friend2.greet();
-friend1.compliment("Eben", "car");
-friend2.compliment("Eben", "gaming pc");
+// class Person {
+//   #firstName;
+//   #lastName;
+//   constructor(firstName, lastName) {
+//     this.#firstName = firstName;
+//     this.#lastName = lastName;
+//   }
+//   greet() {
+//     console.log(`Hello, my name is ${this.firstName}`);
+//   }
+//   compliment(name, object) {
+//     console.log(`That's a wonderful ${object}, ${name}! From ${this.firstName}`);
+//   }
+//   fullName() {
+//     return this.firstName + " " + this.lastName;
+//   }
+//   get firstName() {
+//     return this.#firstName;
+//   }
+//   set firstName(firstName) {
+//     this.#firstName = firstName;
+//   }
+//   get lastName() {
+//     return this.#lastName;
+//   }
+//   set lastName(lastName) {
+//     this.#lastName = lastName;
+//   }
+// }
+
+// Person.prototype.introduce = function() {console.log(`Hi, I am ${this.firstName}`)};
+// Person.prototype.favoriteColor = "blue";
+// let person1 = new Person("Joe", "Deer");
+// person1.introduce();
+// console.log(`${person1.firstName} has a favorite color of ${person1.favoriteColor}`)
+
+// let friend1 = new Person("Estelle", "Posthumus");
+// let friend2 = new Person("Pierre", "Van der Merwe");
+// friend1.lastName = "Van Wyk";
+// console.log(friend1.fullName());
+// console.log(`Hello ${friend1.firstName} and ${friend2.firstName}!`);
+// friend1.firstName = "Rynhardt";
+// friend1.greet();
+// friend2.greet();
+// friend1.compliment("Eben", "car");
+// friend2.compliment("Eben", "gaming pc");
+
+//Inheritence
+//super calls the constructor in the parent and its compulsary
+
+// class Vehicle {
+//   color;
+//   currentSpeed;
+//   maxSpeed;
+//   constructor(color, currentSpeed, maxSpeed) {
+//     this.color = color;
+//     this.currentSpeed = currentSpeed;
+//     this.maxSpeed = maxSpeed;
+//   }
+//   move() {
+//     console.log(`Moving at ${this.currentSpeed}`);
+//   }
+//   accelerate(amount) {
+//     this.currentSpeed += amount;
+//   }
+// }
+// class Motorcycle extends Vehicle {                    //extends inherit from parent(vehicle);
+//   fuel;
+//   constructor(color, currentSpeed, maxSpeed, fuel) {
+//     super(color, currentSpeed, maxSpeed);
+//     this.fuel;
+//   }
+//   doWheelie() {
+//     console.log("Driving on one wheel!");
+//   }
+// }
+// let motorC = new Motorcycle("blue", 100, 120, "diesel");
+// console.log(motorC.color);
+// motorC.move();
+// motorC.accelerate(15);
+// motorC.move();
+
+//Practise exercise 7.3
+
+// class Animal {
+//   species;
+//   sound;
+//   constructor(species, sound) {
+//     this.species = species;
+//     this.sound = sound;
+//   }
+//   animalSound() {
+//     console.log(`A ${this.species} can ${this.sound}!`);
+//   }
+// }
+// Animal.prototype.trick = function () {
+//   console.log(`This ${this.species} can jump.`);
+// };
+
+// let dog = new Animal("yorkie", "bark");
+// let lion = new Animal("lion", "roar");
+// lion.trick();
+// lion.animalSound();
+// dog.animalSound();
+// dog.trick();
+// console.log(dog);
+// console.log(lion);
+
