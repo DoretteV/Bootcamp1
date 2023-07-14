@@ -93,6 +93,7 @@
 
 //Properties, getters and setters, prototype
 //getters and setters # protects
+//getters get the properties and does not change it
 //prototype makes it possible to have objects. Objects inherit from object.prototype
 
 // class Person {
