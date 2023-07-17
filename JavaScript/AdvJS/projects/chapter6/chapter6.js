@@ -6,7 +6,7 @@
 //        recursiveCount(x + 1);
 //     }
 // }
-// recursiveCount(0);                          //it will start counting from the number you put in ()
+// recursiveCount(5);                          //it will start counting from the number you put in ()
 
 //Set timeout order
 

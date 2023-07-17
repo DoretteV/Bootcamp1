@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <h1>Practise exercise 10.10</h1>
+    <div id="message">Complete JavaScript Course</div>
+    <div>
+        <input type="text" id="addItem">
+        <input type="button" id="addNew" value="Add to List" onclick="createListItem()">
+    </div>
+    <div id="output">
+        <h1>Shopping List</h1>
+        <ol id="sList"> </ol>
+    </div>
+    <script>
+
+        let oList = document.getElementById("sList");
+        let item = document.getElementById("addItem");
+
+        function createListItem() {
+        let li = document.createElement("li");
+        li.innerText = item.value;
+        oList.appendChild(li);
+        item.value = "";
+        }
+    </script>
+</body>
+
+</html>
+
+<!--<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Let's find the treasure</h1>
+    <div id="forest">
+      <div id="tree1">
+        <div id="squirrel"></div>
+        <div id="flower"></div>
+      </div>
+      <div id="tree2">
+        <div id="shrubbery">
+          <div id="treasure"></div>
+        </div>
+        <div id="mushroom">
+          <div id="bug"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      console.dir(document.body);
+      console.dir(
+        document.body.children.forest.children.tree2.children.shrubbery.children
+          .treasure);
+          console.dir(document.body.childNodes[3].childNodes[3].childNodes[1].childNodes[1]);
+          // //instead of index you can also use children.treasure
+        //   console.dir(document.body.childNodes[3].childNodes[3].childNodes[1].
+        //   children.treasure); 
+        //   console.dir(document.body.children.forest.children.tree2.parentElement);      
+        //   console.dir(document.body.children.forest.children.tree2.previousElementSibling);
+        // console.dir(document.body.children.forest.children.tree1.nextElementSibling);            
+    </script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sample Webpage</title>
+</head>
+
+<body>
+    <div class="main">
+        <div>
+            <ul>
+                <li>One</li>
+                <li>Two</li>
+                <li>Three</li>
+            </ul>
+        </div>
+        <div>blue</div>
+        <div>green</div>
+        <div>yellow</div>
+        <div>Purple</div>
+    </div>
+    <script>
+        // console.dir(document.body.children[0].children[0].children[0].children[1].nextElementSibling.textContent);
+        console.dir(document.body.children[0].children[3].nextElementSibling.textContent);
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Welcome page</h1>
+    <p id="greeting">
+        Hi!
+    </p>
+    <script>
+        document.body.children.greeting.innerText = "Bye!";                 //changing greeting to bye
+        // document.body.children.greeting.innerHTML = "<h1>Bye!</h1>";        //innerHTML will recognize the tags
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Practise exercise 10.3</h1>
+    <p>Rugby</p>
+    <p>Cricket</p>
+    <p>Tennis</p>
+    <script>
+        let sport = document.getElementsByTagName("p");
+        console.log(sport[1]);
+        console.log(sport.item(1));                         //both get the same result
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Just an example</h1>
+    <div id="one" class="example">Hi!</div>
+    <div id="two" class="example">Hi!</div>
+    <div id="three" class="something">Hi!</div>
+</body>
+<script>
+    // console.log(document.getElementById("two"));
+    // console.log(document.getElementsByTagName("div").item(0));            //# is the id . is for classes
+    // console.log(document.getElementsByTagName("div").item(2));
+    // console.log(document.getElementsByTagName("div").namedItem("one"));
+    // console.log(document.getElementsByTagName("h1"));
+    let elements = document.getElementsByClassName("example");
+    console.log(elements);            
+</script>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Practise exercise 10.4</h1>
+    <div class="practise">Car</div>
+    <div class="practise">Boat</div>
+    <div class="practise">Motorcycle</div>
+    <script>
+        let elements = document.getElementsByClassName("practise");
+        console.log(elements[0]);
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Practise exercise 10.5</h1>
+    <div class="animal">dog</div>
+    <div class="animal">cat</div>
+    <div class="animal">bird</div>
+    <div class="animal">fish</div>
+    <script>
+        let element = document.querySelector(".animal");
+        console.log(element);
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Practise exercise 10.6</h1>
+    <div class="weather">Sunny</div>
+    <div class="weather">Raining</div>
+    <div class="weather">Snowing</div>
+    <div class="weather">Windy</div>
+    <script>
+        let elements = document.querySelectorAll(".weather");
+        console.log(elements);
+        elements.forEach(e => console.log(e.textContent));          //loop through with forEach
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div id="one" onclick="stop()">Don't click here!
+    </div>
+    <script>
+      document.getElementById("one").onclick = function () {alert("Ouch! Stop it!")}
+    </script>
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script>
+        function reveal(el) {
+            console.log(el.parentElement);                  //access the parent of element
+        }
+    </script>
+    <button onclick="reveal(this)">Click here!</button>
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Practise exercise 10.7</h1>
+    <script>
+        function message(el) {
+            console.log(el.textContent);
+        }
+    </script>
+    <button onclick="message(this)">Button 1</button>
+    <button onclick="message(this)">Button 2</button>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script>
+        function toggleDisplay() {
+            let p = document.getElementById("magic");
+            if (p.style.display === "none") {
+                p.style.display = "block";
+            } else {
+                p.style.display = "none";
+            }
+        }
+    </script>
+    <p id="magic">I might disappear and appear.</p>
+    <button onclick="toggleDisplay()">Magic!</button>
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        div {
+            height: 30px;
+            width: 100px;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="red"></div>
+    <div id="orange"></div>
+    <div id="yellow"></div>
+    <div id="green"></div>
+    <div id="blue"></div>
+    <div id="indigo"></div>
+    <div id="violet"></div>
+    <button onclick="rainbowify()">Make me a rainbow</button>
+    <script>
+        function rainbowify() {
+            let divs = document.getElementsByTagName("div");
+            for (let i = 0; i < divs.length; i++) {
+                divs[i].style.backgroundColor = divs[i].id;
+            }
+        }
+    </script>
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .hide {
+            display: none;
+        }
+
+        .square {
+            height: 100px;
+            width: 100px;
+            background-color: yellow;
+        }
+
+        .square.blue {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="shape" class="square blue"></div>
+    <button onclick="disappear()">Disappear!</button>
+    <script>
+        function disappear() {
+            document.getElementById("shape").classList.add("hide");
+        }
+    </script>
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script>
+        function change() {
+            document.getElementById("shape").classList.remove("blue");
+        }
+    </script>
+    <style>
+        .square {
+            height: 100px;
+            width: 100px;
+            background-color: yellow;
+        }
+
+        .square.blue {
+            background-color: blue;
+        }
+    </style>
+    <div id="shape" class="square blue"></div>
+
+    <button onclick="change()">Change!</button>
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .hide {
+            display: none;
+        }
+
+        .square {
+            height: 100px;
+            width: 100px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="shape" class="square"></div>
+
+    <button onclick="changeVisibility()">Magic!</button>
+    <script>
+        function changeVisibility() {
+            document.getElementById("shape").classList.toggle("hide");
+        }
+    </script>
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        div {
+            height: 100px;
+            width: 100px;
+            background-color: yellow;
+        }
+
+        .circle {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="shape" class="square"></div>
+
+    <button onclick="changeAttr()">Change attributes...</button>
+    <script>
+        function changeAttr() {
+            let el = document.getElementById("shape");
+            el.setAttribute("style", "background-color:red;border:1px solid black");
+            el.setAttribute("id", "new");
+            el.setAttribute("class", "circle");
+
+        }
+    </script>
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+</head>
+
+<body>
+    <h1>Practise exercise 10.8</h1>
+    <div id="message"></div>
+    <div id="output"></div>
+    <script>
+
+        const message = document.querySelector("#message");
+        const myArray = ["Laurence", "Mike", "John", "Larry", "Kim",
+            "Joanne", "Lisa", "Janet", "Jane"];
+        build();
+        //addClicks();
+        function build() {
+            let html = "<h1>My Friends Table</h1><table>";
+            myArray.forEach((item, index) => {
+                html += `<tr class="box" data-row="${index + 1}"
+                    data-name="${item}" onclick="getData(this)">
+                    <td>${item}</td>`;
+                html += `<td >${index + 1}</td></tr>`;
+            });
+            html += "</table>";
+            document.getElementById("output").innerHTML = html;
+        }
+        function getData(el) {
+            let temp = el.getAttribute("data-row");
+            let tempName = el.getAttribute("data-name");
+            message.innerHTML = `${tempName} is in row #${temp}`;
+        }
+    </script>
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+    <div id="square" style="width:100px;height:100px;background-color:grey;">Click for magic</div>
+    <script>
+        window.onload = function () {
+            document.getElementById("square").addEventListener("click",
+                changeColor);
+        }
+        function changeColor() {
+            let red = Math.floor(Math.random() * 256);
+            let green = Math.floor(Math.random() * 256);
+            let blue = Math.floor(Math.random() * 256);
+            this.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+        }
+    </script>
+</body>
+
+</html>
+
+<!doctype html>
+<html>
+
+<head>
+    <title>JS Tester</title>
+</head>
+
+<body>
+    <h1>Practise exercise 10.9</h1>
+    <div>
+        <button>Button 1</button>
+        <button>Button 2</button>
+        <button>Button 3</button>
+    </div>
+    <script>
+        let buttons = document.querySelectorAll("button");
+        buttons.forEach(e => {
+                function output() {
+                console.log(e.textContent);
+
+            }
+            e.addEventListener("click", output);
+        })
+
+    </script>
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script>
+        function addRandomNumber() {
+            let el = document.createElement("p");
+            el.innerText = Math.floor(Math.random() * 100);
+            document.body.appendChild(el);
+        }
+    </script>
+    <button onclick="addRandomNumber()">Add a number</button>
+</body>
+
+</html>
