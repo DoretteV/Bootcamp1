@@ -1,0 +1,169 @@
+<!--<!doctype html>
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+</head>
+
+<body>
+    <div id="output">Complete JavaScript Course</div>
+    Search for:
+    <input id="sText" type="text">
+    <br> Replace with:
+    <input id="rText" type="text">
+    <br>
+    <button>Replace</button>
+    <script>
+        let output = document.getElementById("output");
+        let findValue = document.getElementById("sText");
+        let replaceValue = document.getElementById("rText");
+        document.querySelector("button").addEventListener("click", lookUp);
+        function lookUp() {
+            let s = output.textContent;
+            let rt = replaceValue.value;
+            let re = new RegExp(findValue.value, "gi");
+            if (s.match(re)) {
+                let newValue = s.replace(re, rt);
+                output.textContent = newValue;
+            }
+        }
+
+    </script>
+</body>
+
+</html>
+
+<!doctype html>
+<html>
+
+<head>
+    <title>JavaScript Course</title>
+</head>
+
+<body>
+    <h1>Practise exercise 12.2</h1>
+    <div class="output"></div>
+    <input type="text" placeholder="Enter Email">
+    <button>Check</button>
+    <script>
+        let output = document.querySelector(".output");
+        let email = document.querySelector("input");
+        let button = document.querySelector("button");
+        button.addEventListener("click", validateEmail);
+
+        function validateEmail(e) {
+            userEmail = email.value;
+            let emailPattern = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/g;
+            
+           
+            if(userEmail.match(emailPattern)) {
+                output.textContent = "valid email";
+                output.style.color = "green";
+            }else {
+                output.textContent = "invalid email";
+                output.style.color = "red"
+            }
+            
+        }
+    </script>
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div id="stored"></div>
+    <script>
+        let message = "Hello storage!";
+        localStorage.setItem("example", message);
+        if (localStorage.getItem("example")) {
+            document.getElementById("stored").innerHTML =
+                localStorage.getItem("example");
+        }
+    </script>
+</body>
+
+</html>
+
+<!doctype html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+    <style>
+        .ready {
+            background-color: #ddd;
+            color: red;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <input placeholder="New Item" value="test item" maxlength="30">
+        <button>Add</button>
+    </div>
+    <ul class="output">
+    </ul>
+    <script>
+        let userTask = document.querySelector(".main input");
+        let addBtn = document.querySelector(".main button");
+        let output = document.querySelector(".output");
+        let tasks = JSON.parse(localStorage.getItem("tasklist")) || [];
+        addBtn.addEventListener("click", createListItem);
+        if (tasks.length > 0) {
+            tasks.forEach((task) => {
+                genItem(task.val, task.checked);
+            });
+        }
+        function saveTasks() {
+            localStorage.setItem("tasklist", JSON.stringify(tasks));
+        }
+        function buildTasks() {
+            tasks.length = 0;
+            let curList = output.querySelectorAll("li");
+            curList.forEach((el) => {
+                let tempTask = {
+                    val: el.textContent,
+                    checked: false
+                };
+                if (el.classList.contains("ready")) {
+                    tempTask.checked = true;
+                }
+                tasks.push(tempTask);
+            });
+            saveTasks();
+        }
+        function genItem(val, complete) {
+            let li = document.createElement("li");
+            let temp = document.createTextNode(val);
+            li.appendChild(temp);
+            output.append(li);
+            userTask.value = "";
+            if (complete) {
+                li.classList.add("ready");
+            }
+            li.addEventListener("click", (e) => {
+                li.classList.toggle("ready");
+                buildTasks();
+            });
+            return val;
+        }
+        function createListItem() {
+            let val = userTask.value;
+            if (val.length > 0) {
+                let myObj = {
+                    val: genItem(val, false),
+                    checked: false
+                };
+                tasks.push(myObj);
+                saveTasks();
+            }
+        }
+    </script>
+</body>
+
+</html>
