@@ -1,0 +1,785 @@
+
+<!-- <!DOCTYPE html>
+<html>
+
+<body>
+    <div id="message"></div>
+    <script>
+        let message = document.getElementById("message");
+        if (window.FileReader) {
+            message.innerText = "Good to go!";
+        } else {
+            message.innerText = "No FileReader :(";
+        }
+    </script>
+</body>
+
+</html> -->
+<!-- local file reader. If you open this in your browser it should say Good to go! -->
+
+<!-- <!DOCTYPE html>
+<html>
+
+<body>
+    <input type="file" onchange="uploadFile(this.files)" />
+    <div id="message"></div>
+    <script>
+        let message = document.getElementById("message");
+        function uploadFile(files) {
+            console.log(files[0]);
+            message.innerText = files[0].name;
+        }
+    </script>
+</body>
+
+</html> -->
+<!-- Uploading files. We indicate we want toupload a file by adding an input of type file
+This is a list of files. Therefore, we are grabbing the 0th index, the first element in the list. Files are
+represented as objects.  Some of the important properties are the name,
+size, type, and lastModified, but there are many more. We are putting the name of our file in the innerText 
+of our div message. So, on the screen, you will see the name of the file appear in the div -->
+
+<!-- <html>
+
+<body>
+    <input type="file" multiple onchange="uploadFile(this.files)" />
+    <div id="message"></div>
+    <script>
+        let message = document.getElementById("message");
+        function uploadFile(files) {
+            for (let i = 0; i < files.length; i++) {
+                message.innerHTML += files[i].name + "<br>";
+            }
+        }
+    </script>
+</body>
+
+</html> -->
+<!-- Here is how to upload multiple files at the same time 
+We have added the multiple attribute to our input element. This changes the text on
+the button; instead of Choose file it now says Choose files, and we can select more
+than one file as a result. changed our upload function by adding a loop 
+Instead of innerText we are now using innerHTML-->
+
+<!-- <!DOCTYPE html>
+<html>
+ <body>
+ <input type="file" onchange="uploadAndReadFile(this.files)" />
+ <div id="message"></div>
+ <script>
+ let message = document.getElementById("message");
+ function uploadAndReadFile(files) {
+ let fr = new FileReader();
+ fr.onload = function (e) {
+ message.innerHTML = e.target.result;
+ };
+ fr.readAsText(files[0]);
+ }
+ </script>
+ </body>
+</html> -->
+<!-- Reading files we are using FileReader.
+Reading the data can then be done using one of the readAs() methods on the
+FileReader object. We have used readAsText() here, because we are dealing with a
+text file. This triggers the actual reading and the onload function that comes with it
+gets triggered when it's done, adding the result of the reading to our message -->
+
+<!-- Practice exercise 14.1 -->
+<!-- <!doctype html>
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+    <style>
+        .thumb {
+            max-height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Practice exercise 14.1</h1>
+    <input type="file" multiple accept="image/*" />
+    <div class="output"></div>
+    <script>
+        let message = document.getElementById("message");
+        let output = document.querySelector(".output");
+        let myInput = document.querySelector("input");
+        myInput.addEventListener("change", uploadAndReadFile);
+        function uploadAndReadFile(e) {
+            let files = e.target.files;
+            for (let i = 0; i < files.length; i++) {
+                let file = files[i];
+                let img = document.createElement("img");
+                img.classList.add("thumb");
+                img.file = file;
+                output.appendChild(img);
+                let reader = new FileReader();
+                reader.onload = (function (myImg) {
+                    return function (e) {
+                        myImg.src = e.target.result;
+                    };
+                }) (img);
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+
+<body>
+    <script>
+        window.onload = init;
+        function init() {
+            navigator.geolocation.getCurrentPosition(showGeoPosition);
+        }
+        function showGeoPosition(data) {
+            console.dir(data);
+        }
+    </script>
+</body>
+
+</html> -->
+<!-- Getting position data with GeoLocation
+getCurrentPosition() method takes another method as an argument. The position data gets sent to 
+this function and that function will use the data as input. we will have to wrap console.dir() in 
+an external function (called showGeoPosition()) that takes a parameter and outputs this data so that 
+we can see the data in the console. We can then send this function to the getCurrentPosition()
+function and see the data. -->
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="c1"></canvas>
+    <script>
+        let canvas = document.getElementById("c1");
+        let ctx = canvas.getContext("2d");
+        canvas.width = 500; //px
+        canvas.height = 500; //px
+        ctx.fillStyle = "blue";
+        ctx.fillRect(20, 40, 100, 100);
+    </script>
+</body>
+
+</html> -->
+<!-- HTML5 Canvas
+The context of the canvas is read and stored in the ctx variable. We need this to be able to draw on the canvas
+With the fillRect() method on the context of the canvas, we can draw a rectangle
+on the canvas. It takes four parameters. The first two are the x and y coordinates
+of where the figure should be added to the canvas. The last two are the width and
+height of the rectangle. -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <style>
+        canvas {
+            border: 1 px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Practice exercise 14.2</h1>
+    <canvas id="canvas" width="640" height="640"></canvas>
+    <script>
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        ctx.fillStyle = "red";
+        ctx.fillRect(100, 100, 500, 300);              //filled shape
+        ctx.strokeRect(90, 90, 520, 320);               //outline
+        ctx.clearRect(150, 150, 400, 200);              //transparent
+    </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #canvas1 {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas1"></canvas>
+    <script>
+        let canvas = document.getElementById("canvas1");
+        let ctx = canvas.getContext("2d");
+        canvas.width = 100;
+        canvas.height = 100;
+        ctx.lineWidth = 2;
+        ctx.moveTo(0, 20);
+        ctx.lineTo(50, 100);
+        ctx.stroke();
+    </script>
+    //<script>
+        //let canvas = document.getElementById("canvas1");
+        //let ctx = canvas.getContext("2d");
+        //canvas.width = 150;
+        //canvas.height = 200;
+        //ctx.beginPath();
+        //ctx.arc(75, 100, 50, 0, Math.PI * 2);
+        //ctx.stroke();
+    //</script>
+</body>
+
+</html> -->
+<!-- Dynamic canvas. Adding lines and circles to the canvas. Firs we are drawing a line in the block 
+and then a circle. We use the arc() method to create a curve or a circle. It takes five parameters
+start position x on canvas
+start position y on canvas, radius of the circle, starting angle in radians, ending angle in radians -->
+
+<!-- <!doctype html>
+<html>
+
+<head>
+    <title>Practice exercise 14.3</title>
+    <style>
+        #canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="640" height="640">Not Supported</canvas>
+    <script>
+        let canvas = document.querySelector("#canvas");
+        let ctx = canvas.getContext("2d");
+        ctx.beginPath();
+        ctx.fillStyle = "red";
+        ctx.arc(300, 130, 100, 0, Math.PI * 2);         //drawing our circle
+        ctx.fill();
+        ctx.beginPath();
+        ctx.fillStyle = "black";
+        ctx.arc(250, 120, 20, 0, Math.PI * 2);          //drawing our eyes
+        ctx.moveTo(370, 120);
+        ctx.arc(350, 120, 20, 0, Math.PI * 2);          //drawing our eyes
+        ctx.moveTo(240, 160);
+        ctx.arc(300, 160, 60, 0, Math.PI);              //drawing the mouth
+        ctx.fill();
+        ctx.moveTo(300, 130);                           //drawing the nose
+        ctx.lineTo(300, 150);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(300, 230);                           //drawing the body
+        ctx.lineTo(300, 270);
+        ctx.lineTo(400, 270);
+        ctx.lineTo(200, 270);
+        ctx.lineTo(300, 270);
+        ctx.lineTo(300, 350);
+        ctx.lineTo(400, 500);
+        ctx.moveTo(300, 350);
+        ctx.lineTo(200, 500);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.fillStyle = "blue";
+        ctx.moveTo(200, 50);                            //drawing the blue triangel
+        ctx.lineTo(400, 50);
+        ctx.lineTo(300, 20);
+        ctx.lineTo(200, 50);
+        ctx.fill();
+        ctx.stroke();
+    </script>
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #canvas1 {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas1"></canvas>
+    <script>
+        let canvas = document.getElementById("canvas1");
+        let ctx = canvas.getContext("2d");
+        canvas.width = 200;
+        canvas.height = 200;
+        ctx.font = "24px Arial";
+        let txt = "Hi canvas!";
+        ctx.fillText(txt, 10, 35);
+    </script>
+</body>
+
+</html> -->
+<!-- Adding text to the canvas. The fillText() method is used to add text. We have to specify three parameters: 
+the text, the x position, and the y position. -->
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #canvas1 {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    Practice exercise 14.4
+    <canvas id="canvas1" width="640" height="640"></canvas>
+    <script>
+        let canvas = document.getElementById("canvas1");
+        let ctx = canvas.getContext("2d");
+        let str = "Hello World";
+        ctx.font = "italic 50px Comic";
+        ctx.fillStyle = "blue";
+        ctx.fillText(str, 100, 100);
+        ctx.font = "bold 20px Arial";
+        ctx.fillStyle = "red";
+        for (let x = 1; x < 11; x++) {
+            ctx.fillText("counter:" + x, 50, (200 + (40 * x)));
+        }  
+    </script>
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="c1"></canvas>
+    <img id="flower" src="flower.jpg" />
+    <script>
+        window.onload = function () {
+            let canvas = document.getElementById("c1");
+            canvas.height = 300;
+            canvas.width = 300;
+            let ctx = canvas.getContext("2d");
+            let myImage = document.getElementById("flower");
+            ctx.drawImage(myImage, 10, 10);
+        };
+    </script>
+</body>
+
+</html> -->
+<!-- Adding and uploading images to the canvas -->
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas1"></canvas>
+    <canvas id="canvas2"></canvas>
+    <canvas id="canvas3"></canvas>
+    <script>
+        let canvas1 = document.getElementById("canvas1");
+        let ctx1 = canvas1.getContext("2d");
+        ctx1.strokeRect(5, 5, 150, 100);
+        let canvas2 = document.getElementById("canvas2");
+        let ctx2 = canvas2.getContext("2d");
+        ctx2.beginPath();
+        ctx2.arc(60, 60, 20, 0, 2 * Math.PI);
+        ctx2.stroke();
+        let canvas3 = document.getElementById("canvas3");
+        let ctx3 = canvas3.getContext("2d");
+        ctx3.drawImage(canvas1, 10, 10);
+        ctx3.drawImage(canvas2, 10, 10);
+    </script>
+</body>
+
+</html> -->
+<!-- We can use one canvas inside another canvas as well. We create three canvases, to two we add shapes, and 
+the third one is a combination of the first two. -->
+
+<!-- <html>
+
+<head>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="file" id="imgLoader" />
+    <br>
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        let imgLoader = document.getElementById("imgLoader");
+        imgLoader.addEventListener("change", upImage, false);
+        function upImage() {
+            let fr = new FileReader();
+            fr.readAsDataURL(event.target.files[0]);
+            fr.onload = function (e) {
+                let img = new Image();
+                img.src = event.target.result;
+                img.onload = function () {
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+                };
+                console.log(fr);
+            };
+        }
+    </script>
+</body>
+
+</html> -->
+<!-- We also can upload images to the canvas.  -->
+
+<!-- <!doctype html>
+<html>
+
+<head>
+    <title>Canvas HTML5</title>
+    <style>
+        #canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Practice exercise 14.5</h1>
+    <div><label>Image</label>
+        <input type="file" id="imgLoader" name="imgLoader">
+    </div>
+    <div><canvas id="canvas"></canvas></div>
+    <script>
+        let canvas = document.querySelector("#canvas");
+        let ctx = canvas.getContext("2d");
+        let imgLoader = document.querySelector("#imgLoader");
+        imgLoader.addEventListener("change", handleUpload);
+        function handleUpload(e) {
+            console.log(e);
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                console.log(e);
+                let img = new Image();
+                img.onload = function () {
+                    canvas.width = img.width / 2;
+                    canvas.height = img.height / 2;
+                    ctx.drawImage(img, 0, 0, img.width / 2,
+                        img.height / 2);
+                }
+                img.src = e.target.result;
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    </script>
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        window.onload = init;
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        canvas.height = 500;
+        canvas.width = 500;
+        var pos = {
+            x: 0,
+            y: 50,
+        };
+        function init() {
+            draw();
+        }
+        function draw() {
+            pos.x = pos.x + 5;
+            if (pos.x > canvas.width) {
+                pos.x = 0;
+            }
+            if (pos.y > canvas.height) {
+                pos.y = 0;
+            }
+            ctx.fillRect(pos.x, pos.y, 100, 100);
+            window.setTimeout(draw, 50);
+        }
+    </script>
+</body>
+
+</html> -->
+<!-- Adding animations to the canvas. We do this by using loops and recursion, combined with timeout(). 
+These drawings with (short) time intervals result in an animation.  -->
+
+<!-- <!doctype html>
+<html>
+
+<head>
+    <title>Canvas HTML5</title>
+    <style>
+        #canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Practice exercise 14.6</h1>
+    <div><canvas id="canvas"></canvas></div>
+    <script>
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        let ballSize = 10;
+        let x = canvas.width / 2;
+        let y = canvas.height / 2;
+        let dirX = 1;
+        let dirY = 1;
+        function drawBall() {
+            ctx.beginPath();
+            ctx.arc(x, y, ballSize, 0, Math.PI * 2);
+            ctx.fillStyle = "red";
+            ctx.fill();
+            ctx.closePath();
+        }
+        function move() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawBall();
+            if (x > canvas.width - ballSize || x < ballSize) {
+                dirX *= -1;
+            }
+            if (y > canvas.height - ballSize || y < ballSize) {
+                dirY *= -1;
+            }
+            x += dirX;
+            y += dirY;
+        }
+        setInterval(move, 10);
+    </script>
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <input type="color" id="bgColor" />
+    <script>
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        canvas.width = 700;
+        canvas.height = 700;
+        let bgColor = "pink";
+        let bgC = document.getElementById("bgColor");
+        bgC.addEventListener("change", function () {
+            bgColor = event.target.value;
+        });
+        window.onload = init; // add this line to the start of the script
+        function init() {
+            canvas.addEventListener("mousemove", draw);
+            canvas.addEventListener("mousemove", setPosition);
+            canvas.addEventListener("mouseenter", setPosition);
+        }
+        let pos = {
+            x: 0,
+            y: 0,
+        };
+        function setPosition(e) {
+            pos.x = e.pageX;
+            pos.y = e.pageY;
+        }
+        function draw(e) {
+            if (e.buttons !== 1) return;
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);
+            setPosition(e);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.lineWidth = 10;
+            ctx.lineCap = "round";
+            ctx.stroke();
+        }
+    </script>
+</body>
+
+</html> -->
+<!-- Drawing on canvas with a mouse.   -->
+
+<!-- <!doctype html>
+<html>
+
+<head>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Practice exercise 14.7</h1>
+    <div class="controls">
+        <button class="clear">Clear</button> <span>Color
+            <input type="color" value="#ffff00" id="penColor"></span>
+        <span>Width
+            <input type="range" min="1" max="20" value="10" id="penWidth"></span>
+    </div>
+    </div>
+    <canvas id="canvas"></canvas>
+    <script>
+        window.onload = init;
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        canvas.style.border = "1px solid black";
+        let penColor = document.querySelector("#penColor");
+        let penWidth = document.querySelector("#penWidth");
+        document.querySelector(".clear").addEventListener(
+            "click", clearImg);
+        canvas.width = 700;
+        canvas.height = 700;
+        let pos = {
+            x: 0,
+            y: 0,
+        };
+        function init() {
+            canvas.addEventListener("mousemove", draw);
+            canvas.addEventListener("mousemove", setPosition);
+            canvas.addEventListener("mouseenter", setPosition);
+        }
+        function draw(e) {
+            if (e.buttons !== 1) return;
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);
+            setPosition(e);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.strokeStyle = penColor.value;
+            ctx.lineWidth = penWidth.value;
+            ctx.lineCap = "round";
+            ctx.stroke();
+        }
+        function setPosition(e) {
+            pos.x = e.pageX;
+            pos.y = e.pageY;
+        }
+        function clearImg() {
+            let temp = confirm("Clear confirm?");
+            if (temp) {
+                ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
+            }       
+        }
+    </script>
+</body>
+
+</html> -->
+
+<!-- <!doctype html>
+<html>
+
+<head>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <input type="color" id="squareColor" />
+    <br>
+    <img src="" width="200" height="200" id="holder" />
+    <input type="button" id="save" value="save" />
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = 200;
+        canvas.height = 200;
+        const penColor = document.getElementById("squareColor");
+        penColor.addEventListener("change", function () {
+            color = event.target.value;
+            draw(color);
+        });
+        document.getElementById("save").addEventListener("click",
+            function () {
+                let dataURL = canvas.toDataURL();                   //we need this in our script to change img 
+                document.getElementById("holder").src = dataURL;    //to a Data URL
+            });
+        function draw(color) {
+            ctx.fillStyle = color;
+            ctx.fillRect(70, 70, 100, 100);
+        }
+    </script>
+</body>
+
+</html> -->
+<!-- Saving dynamic images. -->
+
+<!-- <!DOCTYPE html>
+<html>
+
+<body>
+    <audio controls>
+        <source src="sound.ogg" type="audio/ogg"> //adding audio
+        <source src="sound.mp3" type="audio/mpeg">
+    </audio>
+    <video width="1024" height="576" controls>
+        <source src="movie.mp4" type="video/mp4"> //adding video
+        <source src="movie.ogg" type="video/ogg">
+    </video>
+    <iframe width="1024" height="576" src="https://www.youtube.com/embed/v6VTv7czb1Y">  //adding a youtube link
+    </iframe>
+</body>
+
+</html> -->
+<!-- Media on the page. -->
