@@ -29,7 +29,20 @@
         <div class="myText">Just some text #3</div>
     </div>
     <script>
-        
+        let el1 = document.querySelectorAll(".title");
+        let eText = document.querySelectorAll(".myText");
+        el1.forEach((el) => {
+            el.addEventListener("click", (e) => {
+                console.log(el.nextElementSibling);
+                remover();
+                el.nextElementSibling.classList.toggle("active");
+            })
+        })
+        function remover() {
+            eText.forEach((ele) => {
+                ele.classList.remove("active");
+            })
+        }
     </script>
 </body>
 

@@ -28,14 +28,12 @@
 // class Menu {
 //     #special1 = 100;
 //     #special2= 15;
-//     #special3 = 25;
-//     constructor(steak, chips, milkshake) {
+//     constructor(steak, chips) {
 //         this.steak = steak;
 //         this.chips = chips;
-//         this.milkshake = milkshake;
 //     }
 //     cost() {
-//         return (this.steak * this.#special1) + (this.chips * this.#special2) + (this.milkshake * this.#special3);
+//         return (this.steak * this.#special1) + (this.chips * this.#special2);
 
 //     }
 //     get total() {
@@ -43,11 +41,9 @@
 //     }
 // }
 
-// let steak = new Menu (2, 0, 1);
-// let chips = new Menu (1, 3, 4);
-// let milkshake = new Menu (3, 2, 5);
+// let steak = new Menu (2, 0);
+// let chips = new Menu (1, 3);
 
 // console.log(steak.total);
 // console.log(chips.total);
-// console.log(milkshake.total);
     
