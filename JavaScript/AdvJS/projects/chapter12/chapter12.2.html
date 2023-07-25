@@ -36,10 +36,10 @@
         <input type="submit" value="Sign Up" />
     </form>
     <script>
-        let myForm = document.querySelector(".form");
-        let inputs = document.querySelectorAll("input");
-        let errors = document.querySelectorAll(".error");
-        let required = ["email", "userName"];
+        const myForm = document.querySelector("form");
+        const inputs = document.querySelectorAll("input");
+        const errors = document.querySelectorAll(".error");
+        const required = ["email", "userName"];
         myForm.addEventListener("submit", validation);
         function validation(e) {
             let data = {};
@@ -81,19 +81,19 @@
             }
         }
         data[tempName] = el.value;
-        }
+       }
        });
         if (!error) {
             myForm.submit();
         }
-    }
+       }
         function addError(el, mes, fieldName) {
             let temp = el.nextElementSibling;
             temp.classList.remove("hide");
             temp.textContent = fieldName.toUpperCase() + " " + mes;
             el.style.borderColor = "red";
             el.focus();
- }
+        }
     </script>
 </body>
 
