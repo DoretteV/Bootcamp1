@@ -1,4 +1,7 @@
-function store() {      //stores items in the localStorage
+//How to use local Storage with JavaScript
+//must stingify objects before we store them in the local storage.
+
+    function store() {      //stores items in the localStorage
     let brand = document.getElementById('carBrand').value;
     let price = document.getElementById('carPrice').value;
     let key = document.getElementById('key').value;         //gets the key from the user
