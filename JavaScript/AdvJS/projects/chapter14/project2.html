@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>JavaScript</title>
+    <title>Countdown Clock</title>
     <style>
       .clock {
         background-color: blue;
@@ -50,6 +50,8 @@
             startClock(savedValue);
             let inputValue = new Date(savedValue);
         }
+        //add event listener to invoke a function if the value of the input field is changed
+        //clear the interval if it has changed and set the new endDate value in the local storage.
         endDate.addEventListener("change", function(e) {
             e.preventDefault();
             clearInterval(timeInterval);
